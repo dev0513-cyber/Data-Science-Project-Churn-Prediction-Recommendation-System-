@@ -24,13 +24,22 @@ This project demonstrates real-world data science skills through:
 ## 📁 Project Structure
 
 ```
-ds_project/
-├── data/
-│   ├── telco_churn.csv
-│   ├── tmdb_5000_movies.csv
-│   └── tmdb_5000_credits.csv
+data-science-project-churn-prediction-recommendation-system/
 │
-├── notebooks/
+├── api/                          # FastAPI backend
+│   └── app.py
+│
+├── data/                         # Datasets
+│   ├── telco_churn.csv
+│   ├── tmdb_5000_credits.csv
+│   └── tmdb_5000_movies.csv
+│
+├── models/                       # Trained ML models & artifacts
+│   ├── churn_model_fixed.pkl
+│   ├── churn_pipeline.pkl
+│   └── feature_info.pkl
+│
+├── notebooks/                    # Jupyter notebooks (development & experiments)
 │   ├── 01_EDA_Data_Cleaning.ipynb
 │   ├── 02_Basic_ML_Models.ipynb
 │   ├── 03_Debug_Improve.ipynb
@@ -40,23 +49,21 @@ ds_project/
 │   ├── 07_Model_Explainability.ipynb
 │   └── 08_Recommendation_System.ipynb
 │
-├── api/
-│   └── app.py
-│
-├── streamlit_app/
-│   └── app.py
-│
-├── models/
-│   └── churn_pipeline.pkl
-│
-├── sql/
+├── sql/                          # SQL queries
 │   └── queries.sql
 │
-├── slides/
-├── requirements.txt
-├── Procfile
-├── render.yaml
-└── README.md
+├── src/                          # Utility & helper modules
+│   ├── __init__.py
+│   └── churn_utils.py
+│
+├── streamlit_app/                # Streamlit frontend
+│   └── app.py
+│
+├── requirements.txt              # Python dependencies
+├── runtime.txt                   # Python version for deployment
+├── render.yaml                   # Deployment config (if using Render)
+├── README.md                     # Project documentation
+└── .gitignore
 ```
 
 ---
