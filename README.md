@@ -22,7 +22,6 @@ This project demonstrates real-world data science skills through:
 
 ## 📁 Project Structure
 
-```
 
 ds_project/
 ├── data/
@@ -58,7 +57,6 @@ ds_project/
 ├── render.yaml
 └── README.md
 
-````
 
 ---
 
