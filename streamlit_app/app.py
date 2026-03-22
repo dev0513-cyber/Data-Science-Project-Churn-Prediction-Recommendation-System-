@@ -45,25 +45,10 @@ st.markdown(
 # ── Load Model ─────────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_churn_model():
-    import traceback
-
-    path = os.path.join(
-        os.path.dirname(os.path.abspath(__file__)),
-        "..",
-        "models",
-        "churn_pipeline.pkl",
-    )
-
-    st.write("🔍 Model path:", path)
-    st.write("📂 Exists:", os.path.exists(path))
-
+    path = os.path.join(os.path.dirname(__file__), "..", "models", "churn_pipeline.pkl")
     try:
-        model = joblib.load(path)
-        st.success("Model loaded successfully!")
-        return model
-    except Exception as e:
-        st.error("❌ Model loading failed!")
-        st.code(traceback.format_exc())
+        return joblib.load(path)
+    except:
         return None
 
 
