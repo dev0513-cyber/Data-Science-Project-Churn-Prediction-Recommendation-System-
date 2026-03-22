@@ -7,5 +7,3 @@ seaborn==0.13.2
 joblib==1.4.2
 openpyxl==3.1.2
 imbalanced-learn==0.12.2
-fastapi==0.110.0
-uvicorn==0.29.0
