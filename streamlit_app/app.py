@@ -45,11 +45,19 @@ st.markdown(
 # ── Load Model ─────────────────────────────────────────────────────────────────
 @st.cache_resource
 def load_churn_model():
-    path = os.path.join(os.path.dirname(__file__), "..", "models", "churn_pipeline.pkl")
-    try:
-        return joblib.load(path)
-    except:
+    base = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(base, "..", "models", "churn_pipeline.pkl")
+    path = os.path.normpath(path)  # resolves the ".." cleanly
+
+    if not os.path.exists(path):
+        st.error(f"❌ Model file not found at: `{path}`")
+        st.info(
+            "Files in models/ dir: "
+            + str(os.listdir(os.path.join(base, "..", "models")))
+        )
         return None
+
+    return joblib.load(path)
 
 
 @st.cache_data

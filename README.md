@@ -1,7 +1,8 @@
-```markdown
+---
+
 # 🔮 End-to-End Data Science Project (Churn Prediction + Recommendation System)
 
-A complete production-style Data Science project covering the full lifecycle — from data cleaning and exploratory analysis to machine learning, model explainability, API deployment, and a hybrid recommendation system.
+A complete **production-style Data Science project** covering the full lifecycle — from data cleaning and exploratory analysis to machine learning, model explainability, API deployment, and a hybrid recommendation system.
 
 ---
 
@@ -9,28 +10,36 @@ A complete production-style Data Science project covering the full lifecycle —
 
 This project demonstrates real-world data science skills through:
 
-- 📊 Exploratory Data Analysis (EDA) with business insights  
-- 🤖 Machine Learning model building & comparison  
-- 🛠️ Feature engineering & debugging  
-- 🧠 Model explainability (SHAP, LIME)  
-- ⚡ End-to-end ML pipeline (scikit-learn)  
-- 🌐 FastAPI deployment for predictions  
-- 🎈 Interactive Streamlit dashboard  
-- 🎬 Hybrid Movie Recommendation System  
+* 📊 Exploratory Data Analysis (EDA) with business insights
+* 🤖 Machine Learning model building & comparison
+* 🛠️ Feature engineering & debugging
+* 🧠 Model explainability (SHAP, LIME)
+* ⚡ End-to-end ML pipeline (scikit-learn)
+* 🌐 FastAPI deployment for predictions
+* 🎈 Interactive Streamlit dashboard
+* 🎬 Hybrid Movie Recommendation System
 
 ---
 
 ## 📁 Project Structure
 
 ```
-
-ds_project/
-├── data/
-│   ├── telco_churn.csv
-│   ├── tmdb_5000_movies.csv
-│   └── tmdb_5000_credits.csv
+data-science-project-churn-prediction-recommendation-system/
 │
-├── notebooks/
+├── api/                          # FastAPI backend
+│   └── app.py
+│
+├── data/                         # Datasets
+│   ├── telco_churn.csv
+│   ├── tmdb_5000_credits.csv
+│   └── tmdb_5000_movies.csv
+│
+├── models/                       # Trained ML models & artifacts
+│   ├── churn_model_fixed.pkl
+│   ├── churn_pipeline.pkl
+│   └── feature_info.pkl
+│
+├── notebooks/                    # Jupyter notebooks (development & experiments)
 │   ├── 01_EDA_Data_Cleaning.ipynb
 │   ├── 02_Basic_ML_Models.ipynb
 │   ├── 03_Debug_Improve.ipynb
@@ -40,85 +49,90 @@ ds_project/
 │   ├── 07_Model_Explainability.ipynb
 │   └── 08_Recommendation_System.ipynb
 │
-├── api/
-│   └── app.py
-│
-├── streamlit_app/
-│   └── app.py
-│
-├── models/
-│   └── churn_pipeline.pkl
-│
-├── sql/
+├── sql/                          # SQL queries
 │   └── queries.sql
 │
-├── slides/
-├── requirements.txt
-├── Procfile
-├── render.yaml
-└── README.md
-
-````
+├── src/                          # Utility & helper modules
+│   ├── __init__.py
+│   └── churn_utils.py
+│
+├── streamlit_app/                # Streamlit frontend
+│   └── app.py
+│
+├── requirements.txt              # Python dependencies
+├── runtime.txt                   # Python version for deployment
+├── render.yaml                   # Deployment config (if using Render)
+├── README.md                     # Project documentation
+└── .gitignore
+```
 
 ---
 
 ## 🎯 Key Features
 
 ### 📊 Churn Prediction System
-- Predicts customer churn probability
-- Provides risk classification (LOW / MEDIUM / HIGH)
-- Generates actionable business recommendations
+
+* Predicts customer churn probability
+* Provides risk classification (LOW / MEDIUM / HIGH)
+* Generates actionable business recommendations
 
 ### 🤖 Machine Learning Models
-- Logistic Regression  
-- Random Forest  
-- XGBoost (best performing)
+
+* Logistic Regression
+* Random Forest
+* XGBoost (best performing)
 
 ### 🧠 Explainability
-- SHAP (global + local explanations)  
-- LIME (instance-level interpretation)
+
+* SHAP (global + local explanations)
+* LIME (instance-level interpretation)
 
 ### ⚙️ Production Pipeline
-- End-to-end sklearn Pipeline  
-- Feature preprocessing + SMOTE + model  
-- No data leakage  
+
+* End-to-end `sklearn Pipeline`
+* Feature preprocessing + SMOTE + model
+* No data leakage
 
 ### 🌐 API (FastAPI)
-- Real-time prediction endpoint  
-- JSON-based input/output  
-- Swagger UI included  
+
+* Real-time prediction endpoint
+* JSON-based input/output
+* Swagger UI included
 
 ### 🎈 Dashboard (Streamlit)
-- Interactive churn analysis  
-- Batch predictions  
-- Visual insights  
+
+* Interactive churn analysis
+* Batch predictions
+* Visual insights
 
 ### 🎬 Recommendation System
-- Content-based filtering (TF-IDF + cosine similarity)  
-- Collaborative filtering (SVD)  
-- Hybrid approach (combined scoring)  
+
+* Content-based filtering (TF-IDF + cosine similarity)
+* Collaborative filtering (SVD)
+* Hybrid approach (combined scoring)
 
 ---
 
 ## 📊 Model Performance
 
 | Metric   | Score |
-|----------|------|
-| AUC-ROC  | 0.84 |
-| F1-Score | 0.59 |
-| Accuracy | 0.77 |
+| -------- | ----- |
+| AUC-ROC  | 0.84  |
+| F1-Score | 0.59  |
+| Accuracy | 0.77  |
 
-> Dataset is imbalanced (~26% churn), so F1-score and AUC-ROC are prioritized.
+> Note: Dataset is imbalanced (~26% churn), so F1-score and AUC-ROC are prioritized over accuracy.
 
 ---
 
 ## ⚙️ Setup Instructions
 
 ### 1. Clone Repository
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
 cd ds_project
-````
+```
 
 ### 2. Create Virtual Environment
 
@@ -215,10 +229,12 @@ uvicorn api.app:app --reload --host 0.0.0.0 --port 8000
 ### Streamlit (Free)
 
 * Deploy via Streamlit Cloud
-* Select: streamlit_app/app.py
+* Connect GitHub repo
+* Select `streamlit_app/app.py`
 
 ### FastAPI (Render)
 
+* Create Web Service
 * Start command:
 
 ```bash
@@ -230,32 +246,34 @@ uvicorn api.app:app --host 0.0.0.0 --port $PORT
 ## 💡 Key Concepts Demonstrated
 
 * Handling missing values & outliers
-* Feature engineering impact
-* Model evaluation (AUC, F1, ROC)
+* Feature engineering impact analysis
+* Model evaluation (AUC, F1, ROC curve)
 * Class imbalance (SMOTE)
 * Avoiding data leakage
 * Hyperparameter tuning
-* Explainable AI (SHAP, LIME)
-* API deployment
+* Explainable AI (XAI)
+* REST API deployment
 * Recommendation systems
 
 ---
 
 ## 🛠️ Tech Stack
 
-* Python (pandas, numpy)
-* scikit-learn, XGBoost
-* matplotlib, seaborn
-* SHAP, LIME
-* FastAPI, Uvicorn
-* Streamlit
-* SQLite
+* **Python** (pandas, numpy)
+* **Machine Learning**: scikit-learn, XGBoost
+* **Visualization**: matplotlib, seaborn
+* **Explainability**: SHAP, LIME
+* **API**: FastAPI, Uvicorn
+* **Frontend**: Streamlit
+* **Database/SQL**: SQLite
 
 ---
 
 ## 📌 Highlights
 
 * End-to-end production-ready workflow
-* Covers multiple real-world scenarios
-* Clean modular architecture
-* Strong interview-ready project
+* Covers multiple real-world data science scenarios
+* Clean modular structure (notebooks → pipeline → API → UI)
+* Designed for interview discussions and demonstrations
+
+---
