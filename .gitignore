@@ -7,7 +7,6 @@ build/
 venv/
 .env
 .venv
-*.pkl
 *.pyc
 .DS_Store
 .ipynb_checkpoints/
