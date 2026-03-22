@@ -89,8 +89,3 @@ ORDER BY churn_rate_pct DESC;
 -- fact_billing (billing_id PK, customer_id FK, plan_id FK, date_id FK,
 --               monthly_charges, total_charges, is_churned, tenure_months)
 --
--- WHY STAR SCHEMA?
---   Optimized for analytical queries (GROUP BY, SUM, AVG)
---   Easy to add new dimensions (e.g., dim_location, dim_campaign)
---   Compatible with BI tools: Tableau, Power BI, Metabase
---   Denormalized = fewer JOINs = faster dashboard queries
